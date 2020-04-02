@@ -26,6 +26,8 @@ Delete all data before Monday, March 23rd
 Get rid of all test clients
 Last name: Nehrt.TestPatient, test, Leverett.Test, Test Patient, Dobbs_Test, Nehrt, Graham-test, Test.Account, Testerson Jr.
 First and Last: shawn brooks, tyka williams
+
+
 ```{r}
 client_count_dat = client_count_data
 head(client_count_dat)
@@ -50,7 +52,7 @@ client_count_dat$P..First.Name = tolower(client_count_dat$P..First.Name)
 describe.factor(client_count_dat$P..Last.Name)
 
 ### Get rid of last names
-client_count_dat = subset(client_count_dat, P..Last.Name != "dobbs_test" & P..Last.Name != "nehrt.testpatient" & P..Last.Name != "test" & P..Last.Name != "leverett.test" & P..Last.Name != "test patient" & P..Last.Name !=  "nehrt" & P..Last.Name != "graham-test" & P..Last.Name != "test.account" & P..Last.Name != "testerson jr.")
+client_count_dat = subset(client_count_dat, P..Last.Name != "dobbs_test" & P..Last.Name != "nehrt.testpatient" & P..Last.Name != "test" & P..Last.Name != "leverett.test" & P..Last.Name != "test patient" & P..Last.Name !=  "nehrt" & P..Last.Name != "graham-test" & P..Last.Name != "test.account" & P..Last.Name != "testerson jr.", P..Last.Name != "testerson")
 describe.factor(client_count_dat$P..Last.Name)
 ### Get rid of first and last names need to create an indicator variable
 client_count_dat$delete = ifelse(client_count_dat$P..Last.Name == "brooks" & client_count_dat$P..First.Name == "shawn", 1, 0)
@@ -77,8 +79,21 @@ client_count_dat$P..Wait.Time = gsub("\\D", "", client_count_dat$P..Wait.Time)
 client_count_dat$P..Wait.Time = as.numeric(client_count_dat$P..Wait.Time)
 describe.factor(client_count_dat$P..Wait.Time)
 hist(client_count_dat$P..Wait.Time)
+#Clean up others
+head(client_count_dat)
+describe.factor(client_count_dat$P..Gender)
+head(client_count_dat)
+describe.factor(client_count_dat$P..Ethnicity)
 
 ```
+Get numeric descriptives
+```{r}
+
+
+```
+
+
+
 Count results here
 ```{r}
 n_clients
