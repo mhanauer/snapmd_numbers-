@@ -16,7 +16,7 @@ Watch for appointments that take place back to back
 
 ```{r}
 setwd("S:/Indiana Research & Evaluation/Matthew Hanauer/TelehealthCIN/data_codebooks")
-client_count_data = read.csv("snap_data_3_31_20_9am.csv", header = TRUE)
+client_count_data = read.csv("snap_data_4_2_20_5pm.csv", header = TRUE)
 
 library(lubridate)
 ```
@@ -87,8 +87,23 @@ describe.factor(client_count_dat$P..Ethnicity)
 
 ```
 Get numeric descriptives
+P..Wait.Time
+P..Consultation.Time
+P..Age
 ```{r}
+head(client_count_dat)
+numeric_des = client_count_dat[c("P..Wait.Time", "P..Consultation.Time", "P..Age")]
+head(numeric_des)
+numeric_names = c("wait time", "consultation time", "age")
+numeric_des_mean = round(colMeans(numeric_des, na.rm = TRUE),2)
+numeric_des_mean
 
+numeric_des_sd = round(apply(numeric_des, 2, sd),2)
+numeric_des_sd
+
+numeric_des_dat = cbind(t(numeric_des_mean), t(numeric_des_sd))
+numeric_des_dat
+describe.factor(client_count_dat$D..Consultation.Dates, decr.order=FALSE)
 
 ```
 
