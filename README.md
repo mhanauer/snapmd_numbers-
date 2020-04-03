@@ -15,7 +15,7 @@ Need those who have a dimissal reason
 Watch for appointments that take place back to back
 
 ```{r}
-setwd("S:/Indiana Research & Evaluation/Matthew Hanauer/TelehealthCIN/data_codebooks")
+setwd("T:/CRI_Research/telehealth_evaluation/data_codebooks")
 client_count_data = read.csv("snap_data_4_2_20_5pm.csv", header = TRUE)
 
 library(lubridate)
